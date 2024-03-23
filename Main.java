@@ -1,6 +1,7 @@
 import java.util.Map;
 import java.util.Scanner;
 
+
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static int result;
@@ -20,6 +21,11 @@ public class Main {
         boolean isArabic;
 
         String[] blacks = userInput.split(" ");
+        int len1=userInput.length();
+        if(len1>6){
+            System.out.println("Некорректное количество символов");
+            return;
+        }
         String num1 = blacks[0];
         String oper = blacks[1];
         String num2 = blacks[2];
@@ -37,7 +43,7 @@ public class Main {
 
         }
         if (arabNum1 == null || arabNum2 == null||arabNum1>10||arabNum2>10||arabNum1<0||arabNum2<0) {
-            throw new RuntimeException("Некорретно");
+            throw new RuntimeException("Некорретные символы");
         }
 
         switch (oper) {
@@ -83,7 +89,7 @@ public class Main {
                 resultString.append("X");
                 result = result - 10;
             }
-            if (result >= 9) {
+            if (result == 9) {
                 resultString.append("IX");
                 result = result - 9;
             }
