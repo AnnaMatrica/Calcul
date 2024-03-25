@@ -5,26 +5,30 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static int result;
-
-
     public static void main(String[] args) {
         System.out.println("Введите выражение из двух чисел от 0 до 10, использовать можно как арабские так и римские цифры!");
+
+        String userInput = scanner.nextLine();
+        String result = calc(userInput);
+
+    }
+    public static String calc(String userInput){
         Map<String, Integer> rimMap = Map.of("I", 1, "II", 2,
                 "III", 3, "IV",
                 4, "V", 5,
                 "VI", 6, "VII", 7,
                 "VIII", 8, "IX", 9,
                 "X", 10);
-        String userInput = scanner.nextLine();
-
-
         boolean isArabic;
 
         String[] blacks = userInput.split(" ");
         int len1=userInput.length();
         if(len1>6){
             System.out.println("Некорректное количество символов");
-            return;
+            return userInput;
+        } else if(len1<2) {
+            System.out.println("Некорректное количество символов");
+            return userInput;
         }
         String num1 = blacks[0];
         String oper = blacks[1];
@@ -66,7 +70,7 @@ public class Main {
             System.out.println(result);
         } else {
             if (result < 1) {
-                throw new RuntimeException("Не рабатает!!!");
+                throw new RuntimeException("В римской системе нет отрицательных значений!");
             }
             StringBuilder resultString = new StringBuilder();
             if (result >= 100) {
@@ -111,5 +115,6 @@ public class Main {
         }
 
 
+        return userInput;
     }
 }
