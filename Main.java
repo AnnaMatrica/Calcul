@@ -6,7 +6,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static int result;
     public static void main(String[] args) {
-        System.out.println("Введите выражение из двух чисел от 0 до 10, использовать можно как арабские так и римские цифры!");
+        System.out.println("Введите выражение из двух чисел от 1 до 10, использовать можно как арабские так и римские цифры!");
 
         String userInput = scanner.nextLine();
         String result = calc(userInput);
@@ -20,10 +20,10 @@ public class Main {
                 "VIII", 8, "IX", 9,
                 "X", 10);
         boolean isArabic;
-
         String[] blacks = userInput.split(" ");
-        int len1=userInput.length();
-        if(len1>6){
+        int len1;
+        len1=blacks.length;
+        if(len1>3){
             System.out.println("Некорректное количество символов");
             return userInput;
         } else if(len1<2) {
@@ -39,7 +39,6 @@ public class Main {
             arabNum1 = Integer.parseInt(num1);
             arabNum2 = Integer.parseInt(num2);
             isArabic = true;
-
         } catch (Exception exception) {
             arabNum1 = rimMap.get(num1);
             arabNum2 = rimMap.get(num2);
@@ -110,11 +109,7 @@ public class Main {
                 result = result - 1;
             }
             System.out.println(resultString);
-
-
         }
-
-
         return userInput;
     }
 }
